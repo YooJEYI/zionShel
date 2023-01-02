@@ -24,7 +24,7 @@
 						}else{
 					%>
 				
-				            <button type="button" onclick="javascript:location.href='/board/write';" class="btn btn-secondary" style="float: right;">작성</button>
+				            <button type="button" onclick="javascript:location.href='/star/write';" class="btn btn-secondary" style="float: right;">작성</button>
 					<%
 						}
 					%>

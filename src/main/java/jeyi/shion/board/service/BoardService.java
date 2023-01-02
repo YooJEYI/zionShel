@@ -34,6 +34,9 @@ public interface BoardService {
 	int deleteBoard(Map<String, Object> map);
 
 	List<BoardVO> mobileBoardList();
+
+	void starWrite(Map<String, Object> map, MultipartFile file2) throws Exception;
+
 	
 
 }

@@ -45,4 +45,7 @@ public interface BoardMapper  {
 
 	List<BoardVO> mobileBoardList();
 
+
+	void starWrite(Map<String, Object> map);
+
 }

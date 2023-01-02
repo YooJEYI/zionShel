@@ -40,7 +40,6 @@ public class BoardServiceImpl implements BoardService {
 	public void boardWrite(Map<String, Object> map, MultipartFile file2) throws Exception {
 		
 		String projectPath = "/wpdl7899/tomcat/webapps/manager/WEB-INF/classes/static/boardFile";
-//		String projectPath = "C:\\workspace\\shion\\src\\main\\resources\\static\\boardFile";
 		
 		if(!file2.isEmpty() || file2 != null) {
 			UUID uuid = UUID.randomUUID();
@@ -124,6 +123,26 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVO> mobileBoardList() {
 		return this.boardMapper.mobileBoardList();
+	}
+
+	@Override
+	public void starWrite(Map<String, Object> map, MultipartFile file2) throws Exception {
+		
+		String projectPath = "/wpdl7899/tomcat/webapps/manager/WEB-INF/classes/static/boardFile";
+		
+		if(!file2.isEmpty() || file2 != null) {
+			UUID uuid = UUID.randomUUID();
+			
+			String fileName = uuid + "_" + file2.getOriginalFilename();
+			
+			File saveFile = new File(projectPath,fileName);
+			
+			file2.transferTo(saveFile);			
+			map.put("file", saveFile.getName());
+		}
+		
+		boardMapper.starWrite(map);
+		
 	}
 
 	

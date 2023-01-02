@@ -45,16 +45,11 @@ public class BoardController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("currentPage", currentPage);
 		List<Map<String, Object>> list = this.boardService.boardList(map);
-
-		// 전체 게시글 행의 수(total)
 		int total = this.boardService.totalBoard();
 		// total : 행의수, currentPage : 현재 페이지, size : 한 화면에 보여질 목록, list : select결과
 		Map<String, Object> Title = new HashMap<String, Object>();
 		Title.put(currentPage, Title);
-
 		model.addAttribute("conferencePage", new PageVO(total, Integer.parseInt(currentPage), 10, list));
-		model.addAttribute("boardList", list);
-
 		return "board";
 	}
 	
@@ -65,11 +60,9 @@ public class BoardController {
 		return list;
 	}
 	
-	
 
 	@RequestMapping(value = "/searchBoard", method = RequestMethod.GET)
 	public String searchBoard(Model model, @RequestParam Map<String, Object> map) throws Exception {
-
 		StopWatch stopwatch = new StopWatch();
 
 		stopwatch.start();
@@ -82,10 +75,8 @@ public class BoardController {
 			return "NullsearchBoard";
 		} else {
 			model.addAttribute("list", list);
-
 			return "searchBoard";
 		}
-
 	}
 
 	@Override
@@ -116,6 +107,24 @@ public class BoardController {
 		this.boardService.boardWrite(map, file);
 
 		return "redirect:/board";
+	}
+	
+	@GetMapping("/star/write")
+	public String starWriteForm() {
+		return "star-write";
+	}
+
+	@PostMapping("/star/write")
+	public String starWritePost(Model model, @RequestParam Map<String, Object> map, MultipartFile file)
+			throws Exception {
+		
+		if (map.get("boardTitle").toString().isEmpty()) {
+			map.put("boardTitle", "스타 기부자");
+		}
+		
+		this.boardService.starWrite(map, file);
+		
+		return "redirect:/starList";
 	}
 
 	@GetMapping("/board/modify")

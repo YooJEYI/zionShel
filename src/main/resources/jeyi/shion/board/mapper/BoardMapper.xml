@@ -93,6 +93,24 @@
 		)
 	</insert>
 
+	<insert id="starWrite" parameterType="hashMap">
+		INSERT INTO BOARD(
+			FILE,
+			BOARD_TITLE,
+			BOARD_CONTENT,
+			BOARD_CREATE_DATE,
+			BOARD_DVSN
+		)
+		VALUES
+		(
+			#{file},
+			#{boardTitle},
+			#{boardContent},
+			NOW(),
+			3
+		)
+	</insert>
+
 	<update id="boardmodify" parameterType="hashMap">
 	
 		UPDATE BOARD

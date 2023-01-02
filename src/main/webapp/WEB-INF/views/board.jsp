@@ -7,6 +7,7 @@ charset=UTF-8"%>
     <title>시온쉼터</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="/bootstrap/js/board.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/bootstrap/css/animate.css">
@@ -66,13 +67,13 @@ charset=UTF-8"%>
 	                     </tr>
 	                  </thead>
 	                  <tbody style="text-align: center;" id="BOARDLIST">
-	                     <c:forEach var="board" items="${boardList}" varStatus="varStatus">
-	                           <tr>
-	                              <td>${board.rnum } </td>
-	                              <td ><a href="/board/boardDetail?boardId=${board.boardId }"> ${board.boardTitle } </a></td>
-	                              <td>${board.boardCreateDate }</td>
-	                           </tr>
-	                     </c:forEach>
+<%-- 	                     <c:forEach var="board" items="${conferencePage.content}" varStatus="varStatus"> --%>
+<!-- 	                           <tr> -->
+<%-- 	                              <td>${board.rnum } </td> --%>
+<%-- 	                              <td ><a href="/board/boardDetail?boardId=${board.boardId }"> ${board.boardTitle } </a></td> --%>
+<%-- 	                              <td>${board.boardCreateDate }</td> --%>
+<!-- 	                           </tr> -->
+<%-- 	                     </c:forEach> --%>
 	                  </tbody>
 	            </table>
             <hr />
@@ -118,5 +119,10 @@ charset=UTF-8"%>
 
 	<jsp:include page="footer.jsp"></jsp:include>
 	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			init()	
+		})
+	</script>
 </body>
 </html>
