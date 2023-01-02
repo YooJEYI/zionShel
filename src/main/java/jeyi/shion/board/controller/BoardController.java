@@ -40,7 +40,7 @@ public class BoardController {
 	}
 
 	@GetMapping("/board")
-	public String board(Model model, HttpServletRequest request, HttpServletResponse  response,
+	public String board(Model model, HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value = "currentPage", defaultValue = "1") String currentPage) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("currentPage", currentPage);
